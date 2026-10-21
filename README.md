@@ -137,3 +137,18 @@ white_wine_financial_rag_homework/
 2.  对营业收入、净利润等核心指标建立结构化字段；
 3.  对跨公司问题采用分公司检索后再汇总的方法；
 4.  优化切块策略，使表格信息和页码信息保留更加完整。
+
+## 本次复核补充：实际运行证据
+
+- `screenshots/18_fastgpt_knowledge_base_index_model.png`：知识库包含10份报告，索引模型显示为阿里-emb3。
+- `screenshots/19_fastgpt_hybrid_config.png` 和 `screenshots/19b_fastgpt_search_filter_config.png`：实际界面显示混合检索语义权重0.3、全文权重0.7，结果重排开启，模型为 `gte-rerank-v2`，并记录引用上限/最低相关度。
+- `screenshots/20_q2_runtime_search_parameters.png` 和 `screenshots/21_q2_runtime_embedding_rerank.png`：Q2本次完整响应显示实际问题、混合检索参数、阿里-emb3、gte-rerank-v2及重排权重。
+- `screenshots/22_q2_actual_retrieval_main_data.png`、`screenshots/23_q2_actual_retrieval_source_footer_and_other_result.png`、`screenshots/24_q2_actual_answer.png`：展示Q2实际召回表格、结果卡片文件名上下文、以及带第4页出处的实际回答。召回响应同时包含不相关片段，已如实记录为检索噪声。
+- `tests/test_results.csv`：保留原10题评价和失败分析，增加每题实际输出证据、检索方式的证据级别和复核备注。Q2为本次实际复测；其他题目使用历史日志/原截图，不冒充本次重新运行。
+- `tests/dialogue_log_evidence.csv` 与 `docs/对话日志证据整理说明.md`：整理历史对话输出、引用ID、可见页码及其限制，不包含不必要的用户标识/IP/`reasoning`字段。
+- `docs/one_page_conclusion.md` 和 `白酒财报问答知识库_一页实验结论_复核版.pdf`：更新后的实验结论。
+- `docs/上传GitHub与提交作业指南.md`：GitHub上传及作业提交步骤。
+
+### 证据边界
+
+FastGPT当前混合检索配置和Q2本次运行已有截图。历史日志没有为每道题保存单轮完整检索参数，因此其他题的历史检索模式不能仅凭日志独立复原；原有正确、部分正确、错误评价及错因均保留。
